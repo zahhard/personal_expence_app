@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:personal_expence_app/models/Transaction.dart';
 import 'package:personal_expence_app/widgets/NewTransaction.dart';
-import 'package:personal_expence_app/widgets/transaction_list.dart';
+import 'package:personal_expence_app/widgets/user_transaction.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,16 +37,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-
-  final List<Transaction> transactions = [
-    Transaction(id: '1', title: 'shoes', amount: 12.8, date: DateTime.now()),
-    Transaction(id: '2', title: 'cloths', amount: 23.8, date: DateTime.now()),
-    Transaction(id: '3', title: 'ball', amount: 55.44, date: DateTime.now()),
-    Transaction(id: '4', title: 'glass', amount: 34.48, date: DateTime.now()),
-  ];
   int _counter = 0;
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
 
   void _incrementCounter() {
     setState(() {
@@ -71,10 +62,10 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             elevation: 5,
           ),
-          NewTranaction(),
-          TranslationList()
+          UserTransaction()
         ],
       ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',

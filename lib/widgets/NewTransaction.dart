@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NewTranaction extends StatelessWidget{
-
+  final Function addTx;
   final titleController = TextEditingController();
   final amountController = TextEditingController();
+
+  NewTranaction(this.addTx);
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class NewTranaction extends StatelessWidget{
               ),
               TextButton(
                 onPressed: () {
+                  addTx(titleController.text, double.parse(amountController.text));
                 },
                 child: Container(
                   color: Colors.green,
