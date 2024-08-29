@@ -17,6 +17,12 @@ class _UsetTransaction extends State<UserTransaction>{
     Transaction(id: '2', title: 'cloths', amount: 23.8, date: DateTime.now()),
     Transaction(id: '3', title: 'ball', amount: 55.44, date: DateTime.now()),
     Transaction(id: '4', title: 'glass', amount: 34.48, date: DateTime.now()),
+    Transaction(id: '3', title: 'ball', amount: 55.44, date: DateTime.now()),
+    Transaction(id: '4', title: 'glass', amount: 34.48, date: DateTime.now()),
+    Transaction(id: '3', title: 'ball', amount: 55.44, date: DateTime.now()),
+    Transaction(id: '4', title: 'glass', amount: 34.48, date: DateTime.now()),
+    Transaction(id: '3', title: 'ball', amount: 55.44, date: DateTime.now()),
+    Transaction(id: '4', title: 'glass', amount: 34.48, date: DateTime.now())
   ];
 
   void addTransaction(String title, double amount){

@@ -7,6 +7,15 @@ class NewTranaction extends StatelessWidget{
   final amountController = TextEditingController();
 
   NewTranaction(this.addTx);
+  void submitData (){
+    final enterTitle = titleController.text;
+    final enterAmount = double.parse(amountController.text);
+
+    if (enterTitle.isEmpty || enterAmount<0){
+      return;
+    }
+    addTx(enterTitle, enterAmount);
+}
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +33,11 @@ class NewTranaction extends StatelessWidget{
                 decoration: InputDecoration(labelText: 'amount'),
                 // onChanged: (val) => inputAmount = val,
                 controller: amountController,
+                keyboardType: TextInputType.number,
+                onSubmitted: (_) =>  submitData,
               ),
               TextButton(
-                onPressed: () {
-                  addTx(titleController.text, double.parse(amountController.text));
-                },
+                onPressed: submitData,
                 child: Container(
                   color: Colors.green,
                   padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),

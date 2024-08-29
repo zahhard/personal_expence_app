@@ -9,27 +9,31 @@ class TranslationList extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: transactions.map((tx) {
-          return Card(
-              child: Row(
-                  children : <Widget>[
-                    Container(
-                      child: Text('\$ ${tx.amount}',  style: TextStyle(fontWeight: FontWeight.bold , fontSize: 20, color: Colors.purple)),
-                      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                      decoration: BoxDecoration(border: Border.all(color: Colors.purple, width: 2)),
-                      padding: EdgeInsets.all(10),
-                    ),
-                    Column(
-                      children: <Widget>[
-                        Text(tx.title, style: TextStyle(fontWeight: FontWeight.bold , fontSize: 17, color: Colors.black)),
-                        Text(tx.date.toString(), style: TextStyle( fontSize: 15, color: Colors.grey))
-                      ],
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                    )
-                  ]
-              )
-          );
-        }).toList(),);
+    return Container(
+        height: 300,
+        child: ListView.builder(
+          itemBuilder: (BuildContext context, int index) {
+            return Card(
+                child: Row(
+                    children : <Widget>[
+                      Container(
+                        child: Text('\$ ${transactions[index].amount}',  style: TextStyle(fontWeight: FontWeight.bold , fontSize: 20, color: Colors.indigo)),
+                        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                        decoration: BoxDecoration(border: Border.all(color: Colors.indigo, width: 2)),
+                        padding: EdgeInsets.all(10),
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Text(transactions[index].title, style: TextStyle(fontWeight: FontWeight.bold , fontSize: 17, color: Colors.black)),
+                          Text(transactions[index].date.toString(), style: TextStyle( fontSize: 15, color: Colors.grey))
+                        ],
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                      )
+                    ]
+                )
+            );
+          },itemCount: transactions.length,)
+    );
+
   }
 }
