@@ -11,7 +11,13 @@ class TranslationList extends StatelessWidget{
   Widget build(BuildContext context) {
     return Container(
         height: 300,
-        child: ListView.builder(
+        child: transactions.isEmpty?
+        Column(
+          children: <Widget>[
+            Text('No transaction added yet! '),
+          ],
+        ) :
+        ListView.builder(
           itemBuilder: (BuildContext context, int index) {
             return Card(
                 child: Row(
