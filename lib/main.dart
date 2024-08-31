@@ -5,7 +5,6 @@ import 'package:personal_expence_app/models/Transaction.dart';
 import 'package:personal_expence_app/widgets/NewTransaction.dart';
 import 'package:personal_expence_app/widgets/chart.dart';
 import 'package:personal_expence_app/widgets/transaction_list.dart';
-import 'package:personal_expence_app/widgets/user_transaction.dart';
 
 void main() {
   runApp(const MyApp());
@@ -41,6 +40,50 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final List<Transaction> _userTransactions = [
      Transaction(
+       id: 't1',
+       title: 'New Shoes',
+       amount: 69.99,
+       date: DateTime.now(),
+     ),
+     Transaction(
+       id: 't2',
+       title: 'Weekly Groceries',
+       amount: 16.53,
+       date: DateTime.now(),
+     ),   Transaction(
+       id: 't1',
+       title: 'New Shoes',
+       amount: 69.99,
+       date: DateTime.now(),
+     ),
+     Transaction(
+       id: 't2',
+       title: 'Weekly Groceries',
+       amount: 16.53,
+       date: DateTime.now(),
+     ),   Transaction(
+       id: 't1',
+       title: 'New Shoes',
+       amount: 69.99,
+       date: DateTime.now(),
+     ),
+     Transaction(
+       id: 't2',
+       title: 'Weekly Groceries',
+       amount: 16.53,
+       date: DateTime.now(),
+     ),   Transaction(
+       id: 't1',
+       title: 'New Shoes',
+       amount: 69.99,
+       date: DateTime.now(),
+     ),
+     Transaction(
+       id: 't2',
+       title: 'Weekly Groceries',
+       amount: 16.53,
+       date: DateTime.now(),
+     ),   Transaction(
        id: 't1',
        title: 'New Shoes',
        amount: 69.99,
