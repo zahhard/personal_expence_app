@@ -97,6 +97,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+
+        backgroundColor: Colors.lightBlueAccent,
         title: Text(
           'Personal Expenses',
         ),
@@ -121,6 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
         onPressed: () => _startAddNewTransaction(context),
+
       ),
     );
   }
