@@ -15,9 +15,9 @@ class TranslationList extends StatelessWidget{
   Widget build(BuildContext context) {
 
     return Container(
-      height: 450,
+      height: 700,
       child: transactions.isEmpty
-          ? Column(
+          ? const Column(
         children: <Widget>[
           Text(
             'No transactions added yet!',
@@ -25,12 +25,6 @@ class TranslationList extends StatelessWidget{
           SizedBox(
             height: 20,
           ),
-          Container(
-              height: 200,
-              child: Image.asset(
-                'assets/images/waiting.png',
-                fit: BoxFit.cover,
-              )),
         ],
       )
           : ListView.builder(
@@ -45,9 +39,9 @@ class TranslationList extends StatelessWidget{
               leading: CircleAvatar(
                 radius: 30,
                 child: Padding(
-                  padding: EdgeInsets.all(6),
+                  padding: EdgeInsets.all(8),
                   child: FittedBox(
-                    child: Text('\$${transactions[index].amount}'),
+                    child: Text('\$${transactions[index].amount}',),
                   ),
                 ),
               ),
@@ -59,7 +53,7 @@ class TranslationList extends StatelessWidget{
               ),
               trailing: IconButton(
                 icon: Icon(Icons.delete),
-                color: Theme.of(context).primaryColorLight,
+                color: Theme.of(context).primaryColorDark,
                 onPressed: () => deleteTx(transactions[index].id),
               ),
             ),
