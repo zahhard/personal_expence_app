@@ -1,12 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class NewTranaction extends StatelessWidget{
+class NewTranaction extends StatefulWidget {
   final Function addTx;
+
+  NewTranaction(this.addTx);
+
+  @override
+  State<StatefulWidget> createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTranaction> {
   final titleController = TextEditingController();
   final amountController = TextEditingController();
 
-  NewTranaction(this.addTx);
+
   void submitData (){
     final enterTitle = titleController.text;
     final enterAmount = double.parse(amountController.text);
@@ -14,14 +22,18 @@ class NewTranaction extends StatelessWidget{
     if (enterTitle.isEmpty || enterAmount<0){
       return;
     }
-    addTx(enterTitle, enterAmount);
-}
+    widget.addTx(enterTitle, enterAmount);
+
+    Navigator.of(context).pop();
+  }
 
   @override
   Widget build(BuildContext context) {
     return
       Card(
+        elevation: 5,
         child: Container(
+          padding: EdgeInsets.all(20),
           child: Column(
             children: <Widget>[
               TextField(
@@ -52,5 +64,5 @@ class NewTranaction extends StatelessWidget{
         ),
       );
   }
-
+  
 }
