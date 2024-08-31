@@ -40,18 +40,18 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   final List<Transaction> _userTransactions = [
-    // Transaction(
-    //   id: 't1',
-    //   title: 'New Shoes',
-    //   amount: 69.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't2',
-    //   title: 'Weekly Groceries',
-    //   amount: 16.53,
-    //   date: DateTime.now(),
-    // ),
+     Transaction(
+       id: 't1',
+       title: 'New Shoes',
+       amount: 69.99,
+       date: DateTime.now(),
+     ),
+     Transaction(
+       id: 't2',
+       title: 'Weekly Groceries',
+       amount: 16.53,
+       date: DateTime.now(),
+     ),
   ];
 
   List<Transaction> get _recentTransactions {
@@ -64,11 +64,11 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
-  void _addNewTransaction(String txTitle, double txAmount) {
+  void _addNewTransaction(String txTitle, double txAmount, DateTime chooseDate) {
     final newTx = Transaction(
       title: txTitle,
       amount: txAmount,
-      date: DateTime.now(),
+      date: chooseDate,
       id: DateTime.now().toString(),
     );
 
@@ -77,6 +77,12 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+
+  void _deleteTransaction(String id) {
+    setState(() {
+      _userTransactions.removeWhere((tx) => tx.id == id);
+    });
+  }
 
 
   void _startAddNewTransaction(BuildContext ctx) {
@@ -99,7 +105,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
 
         backgroundColor: Colors.lightBlueAccent,
-        title: Text(
+        title: const Text(
           'Personal Expenses',
         ),
         actions: <Widget>[
@@ -115,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Chart(_recentTransactions),
-            TranslationList(_userTransactions),
+            TranslationList(_userTransactions, _deleteTransaction),
           ],
         ),
       ),
