@@ -1,45 +1,72 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../models/Transaction.dart';
 
 class TranslationList extends StatelessWidget{
   final List<Transaction> transactions;
-  TranslationList(this.transactions);
+  final Function deleteTx;
+
+  TranslationList(this.transactions, this.deleteTx);
+
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 300,
-        child: transactions.isEmpty?
-        Column(
-          children: <Widget>[
-            Text('No transaction added yet! '),
-          ],
-        ) :
-        ListView.builder(
-          itemBuilder: (BuildContext context, int index) {
-            return Card(
-                child: Row(
-                    children : <Widget>[
-                      Container(
-                        child: Text('\$ ${transactions[index].amount}',  style: TextStyle(fontWeight: FontWeight.bold , fontSize: 20, color: Colors.indigo)),
-                        margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                        decoration: BoxDecoration(border: Border.all(color: Colors.indigo, width: 2)),
-                        padding: EdgeInsets.all(10),
-                      ),
-                      Column(
-                        children: <Widget>[
-                          Text(transactions[index].title, style: TextStyle(fontWeight: FontWeight.bold , fontSize: 17, color: Colors.black)),
-                          Text(transactions[index].date.toString(), style: TextStyle( fontSize: 15, color: Colors.grey))
-                        ],
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                      )
-                    ]
-                )
-            );
-          },itemCount: transactions.length,)
-    );
 
+    return Container(
+      height: 450,
+      child: transactions.isEmpty
+          ? Column(
+        children: <Widget>[
+          Text(
+            'No transactions added yet!',
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Container(
+              height: 200,
+              child: Image.asset(
+                'assets/images/waiting.png',
+                fit: BoxFit.cover,
+              )),
+        ],
+      )
+          : ListView.builder(
+        itemBuilder: (ctx, index) {
+          return Card(
+            elevation: 5,
+            margin: EdgeInsets.symmetric(
+              vertical: 8,
+              horizontal: 5,
+            ),
+            child: ListTile(
+              leading: CircleAvatar(
+                radius: 30,
+                child: Padding(
+                  padding: EdgeInsets.all(6),
+                  child: FittedBox(
+                    child: Text('\$${transactions[index].amount}'),
+                  ),
+                ),
+              ),
+              title: Text(
+                transactions[index].title,
+              ),
+              subtitle: Text(
+                DateFormat.yMMMd().format(transactions[index].date),
+              ),
+              trailing: IconButton(
+                icon: Icon(Icons.delete),
+                color: Theme.of(context).primaryColorLight,
+                onPressed: () => deleteTx(transactions[index].id),
+              ),
+            ),
+          );
+        },
+        itemCount: transactions.length,
+      ),
+    );
   }
 }
