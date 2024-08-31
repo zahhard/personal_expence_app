@@ -90,10 +90,10 @@ class _NewTransactionState extends State<NewTranaction> {
                     TextButton(
                       onPressed: _presentDatePicker,
                       child: Container(
-                        color: Colors.cyanAccent,
+                        color: Colors.lightBlue,
                         padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                         child: const Text(
-                          'Flat Button',
+                          'Choose Date',
                           style: TextStyle(color: Colors.white, fontSize: 13.0),
                         ),
                       ),
@@ -104,7 +104,7 @@ class _NewTransactionState extends State<NewTranaction> {
                TextButton(
                   onPressed: submitData,
                  child: Container(
-                   color: Colors.pinkAccent,
+                   color: Colors.lightBlue,
                    padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                    child: const Text('Add Transaction',
                      style: TextStyle(color: Colors.white, fontSize: 13.0),
